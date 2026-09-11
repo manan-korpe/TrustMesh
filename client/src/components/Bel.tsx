@@ -11,6 +11,7 @@ import {
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar
 } from 'recharts';
+import { useTheme } from '@/providers/Theme.provider';
 
 const DEMO_ORGANIZATION = "BEL Secure Operations";
 
@@ -94,7 +95,8 @@ export default function App() {
   // Application State
   const [role, setRole] = useState('admin');
   const [currentView, setCurrentView] = useState('dashboard');
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
   
   // Wallet / Identity State
   const [isWalletConnected, setIsWalletConnected] = useState(true);
@@ -274,7 +276,7 @@ export default function App() {
 
           {/* Dark / Light Toggle */}
           <button
-            onClick={() => setIsDarkMode(!isDarkMode)}
+            onClick={toggleTheme}
             className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all"
             title="Toggle theme"
           >
