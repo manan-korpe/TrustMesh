@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 // --- CONSTANTS & MOCK DATA GENERATION ---
-const NAMES_POOL = ['Manan', 'Tushar', 'Arun', 'Pratiksha', 'Rithika', 'Vansh'];
+const NAMES_POOL = ['Tushar',];
 const DEPTS = ['IT', 'Operations', 'Security', 'Finance', 'HR', 'Administration'];
 const ROLES = ['Admin', 'Manager', 'Auditor', 'User'];
 
@@ -23,11 +23,6 @@ const generateInitialData = () => {
   
   const users = [
     { id: 'EMP-001', name: availableNames.pop(), dept: 'IT', role: 'Admin', status: 'Verified', wallet: generateHash(40), active: true },
-    { id: 'EMP-002', name: availableNames.pop(), dept: 'Operations', role: 'Manager', status: 'Verified', wallet: generateHash(40), active: true },
-    { id: 'EMP-003', name: availableNames.pop(), dept: 'Security', role: 'Auditor', status: 'Verified', wallet: generateHash(40), active: true },
-    { id: 'EMP-004', name: availableNames.pop(), dept: 'Finance', role: 'User', status: 'Verified', wallet: generateHash(40), active: true },
-    { id: 'EMP-005', name: availableNames.pop(), dept: 'HR', role: 'User', status: 'Pending', wallet: null, active: true },
-    { id: 'EMP-006', name: availableNames.pop(), dept: 'Administration', role: 'User', status: 'Verified', wallet: generateHash(40), active: true },
   ].map(u => ({
     ...u,
     email: `${u.name.toLowerCase()}@TrustMesh.com`,
@@ -52,12 +47,7 @@ const generateInitialData = () => {
   });
 
   const auditLogs = [
-    { id: 101, time: new Date(Date.now() - 86400000 * 2).toLocaleString(), actor: users[0].name, action: 'Platform Deployed', target: 'Smart Contracts', source: 'System', status: 'Success', hash: generateHash(64) },
-    { id: 102, time: new Date(Date.now() - 86400000).toLocaleString(), actor: users[0].name, action: 'Identity Registered', target: users[1].name, source: 'Blockchain', status: 'Success', hash: generateHash(64) },
-    { id: 103, time: new Date(Date.now() - 43200000).toLocaleString(), actor: users[0].name, action: 'Role Assigned', target: `${users[1].name} → Manager`, source: 'Blockchain', status: 'Success', hash: generateHash(64) },
-    { id: 104, time: new Date(Date.now() - 20000000).toLocaleString(), actor: users[1].name, action: 'NFT Minted', target: assets[0].name, source: 'Blockchain', status: 'Success', hash: generateHash(64) },
-    { id: 105, time: new Date(Date.now() - 10000000).toLocaleString(), actor: 'System', action: 'Unauthorized Attempt', target: 'Admin API', source: 'API', status: 'Blocked', hash: '—' },
-  ];
+    ];
 
   return { users, assets, auditLogs };
 };
